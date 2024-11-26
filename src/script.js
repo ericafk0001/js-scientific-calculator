@@ -5,28 +5,52 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentValue = "";
 
   function solve() {
-    const convert = currentValue
-      .replace("×", "*")
-      .replace("÷", "/")
-      .replace("%", "*0.01");
-    const result = eval(convert);
-    currentValue = result.toString();
-    display.value = currentValue;
+    try {
+      // standard js syntax
+      const sanitized = currentValue
+        .replace(/×/g, "*")
+        .replace(/÷/g, "/")
+        .replace(/%/g, "*0.01")
+        .replace(/π/g, "Math.PI")
+        .replace(/sin/g, "Math.sin")
+        .replace(/cos/g, "Math.cos")
+        .replace(/ln/g, "Math.log")
+        .replace(/log/g, "Math.log10")
+        .replace(/√/g, "Math.sqrt")
+        .replace(/e/g, "Math.E")
+        .replace(/tan/g, "Math.tan");
+
+      // function constructor to evaluate the sanitized input safely
+      const result = new Function(`return ${sanitized}`)();
+      currentValue = result.toString();
+      display.value = currentValue;
+    } catch (error) {
+      currentValue = "Error";
+      display.value = currentValue;
+      console.error("Invalid Expression", error);
+    }
   }
 
+  // attach event listeners
   for (let i = 0; i < btns.length; i++) {
     const btn = btns[i];
     btn.addEventListener("click", function () {
       const value = btn.innerText;
 
-      if (value == "AC") {
-        currentValue = "";
+      try {
+        if (value === "AC") {
+          currentValue = "";
+          display.value = currentValue;
+        } else if (value === "=") {
+          solve();
+        } else {
+          currentValue += value;
+          display.value = currentValue;
+        }
+      } catch (error) {
+        currentValue = "Error";
         display.value = currentValue;
-      } else if (value == "=") {
-        solve();
-      } else {
-        currentValue += value;
-        display.value = currentValue;
+        console.error("Button click error", error);
       }
     });
   }

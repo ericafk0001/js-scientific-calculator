@@ -66,13 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (
           ["sin", "cos", "tan", "log", "ln", "√", "e", "π"].includes(value)
         ) {
-          // Check if there's an existing number in the display
+          // is there an existing num?
           const numberInDisplay = currentValue.trim();
           if (numberInDisplay) {
-            // Remove the number at the front and insert the function with that number inside the parentheses
+            // remove previous value insert the function with that number inside the parentheses
             currentValue = `${value}(${numberInDisplay})`;
           } else {
-            // If no number, just add the function with empty parentheses
+            // else just add one bracket
             currentValue += value + "(";
           }
           display.value = currentValue;

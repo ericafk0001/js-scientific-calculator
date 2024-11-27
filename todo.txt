@@ -3,4 +3,4 @@
 3. Dark/Light theme toggle
 4. More scientific functions ✅
 5. Automatic Brackets ✅
-6. Add Scientific Btn Toggle
+6. Add Scientific Btn Toggle ✅

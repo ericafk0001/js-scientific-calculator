@@ -10,22 +10,56 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center mt-3">Scientific Calculator</h1>
+      <h1 class="text-center fs-1 fw-semibold mt-4 mb-4">
+        Scientific Calculator
+      </h1>
       <div class="row">
         <div class="col-12 offset-md-3 col-md-6">
           <div class="card">
             <div class="card-body">
-              <input
-                id="calc-display"
-                readonly
-                class="form-control form-control-lg text-end"
-                type="text"
-                placeholder="calculate something.."
-                aria-label=".form-control-lg example"
-              />
+              <div class="btn-group mb-3" role="group">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  autocomplete="off"
+                  checked
+                />
+                <label class="btn btn-default" for="btnradio1"
+                  ><i class="fa-solid fa-plus"></i
+                ></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio2"
+                  autocomplete="off"
+                />
+                <label class="btn btn-default ms-0" for="btnradio2"
+                  ><i class="fa-solid fa-square-root-variable"></i
+                ></label>
+              </div>
+              <div class="position-relative">
+                <label
+                  for="calc-display"
+                  class="position-absolute top-0 end-0 me-2 text-secondary"
+                  style="pointer-events: none; transform: translateY(-5px)"
+                  >e</label
+                >
+                <input
+                  id="calc-display"
+                  readonly
+                  class="form-control form-control-lg text-end fw-semibold"
+                  type="text"
+                  placeholder="calculate something.."
+                  aria-label=".form-control-lg example"
+                />
+              </div>
               <div class="row gx-1">
                 <div class="col-3">
                   <button type="button" class="btn btn-light w-100 mt-2 border">
@@ -124,7 +158,7 @@
                 <div class="col-3">
                   <button
                     type="button"
-                    class="btn btn-primary w-100 mt-2 border border-primary"
+                    class="btn btn-primary w-100 mt-2 border border-primary fw-bold"
                   >
                     =
                   </button>
@@ -206,6 +240,10 @@
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/480c99c053.js"
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>

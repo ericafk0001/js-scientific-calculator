@@ -1,6 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
   const display = document.getElementById("calc-display");
   const btns = document.getElementsByClassName("btn");
+  const btnradio1 = document.getElementById("btnradio1");
+  const btnradio2 = document.getElementById("btnradio2");
+  const scientificFunctions = document.querySelector(".scientific-functions");
+
+  scientificFunctions.style.position = "absolute";
+  scientificFunctions.style.top = "-9999px";
+
+  btnradio1.addEventListener("change", () => {
+    if (btnradio1.checked) {
+      scientificFunctions.style.position = "absolute";
+      scientificFunctions.style.top = "-9999px";
+    }
+  });
+
+  btnradio2.addEventListener("change", () => {
+    if (btnradio2.checked) {
+      scientificFunctions.style.position = "relative";
+      scientificFunctions.style.top = "0";
+    }
+  });
 
   let currentValue = "";
 

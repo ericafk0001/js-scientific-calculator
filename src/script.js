@@ -44,11 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .replace(/sin/g, "Math.sin") // sin (sine) → Math.sin
         .replace(/cos/g, "Math.cos") // cos (cosine) → Math.cos
         .replace(/tan/g, "Math.tan") // tan (tangent) → Math.tan
-        .replace(/ln/g, "Math.log") // ln (natural logarithm) → Math.log
         .replace(/log/g, "Math.log10") // log (logarithm base 10) → Math.log10
         .replace(/\u221A/g, "Math.sqrt") // √ (square root) → Math.sqrt
-        .replace(/e/g, "Math.E") // e (Euler's number) → Math.E
-        .replace(/10\^/g, "Math.pow(10,"); // For 10^x
+        .replace(/e/g, "Math.E"); // e (Euler's number) → Math.E
 
       // handle factorial
       if (sanitized.includes("!")) {
@@ -56,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
           factorial(parseInt(n))
         );
       }
+      console.log("Sanitized input:", sanitized);
 
       // exponent
       const parsed = sanitized.replace(/\^/g, "**");
@@ -83,9 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
           display.value = currentValue;
         } else if (value === "=") {
           solve();
-        } else if (
-          ["sin", "cos", "tan", "log", "ln", "√", "e", "π"].includes(value)
-        ) {
+        } else if (["sin", "cos", "tan", "log"].includes(value)) {
           // is there an existing num?
           const numberInDisplay = currentValue.trim();
           if (numberInDisplay) {

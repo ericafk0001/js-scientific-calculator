@@ -4,3 +4,5 @@
 4. More scientific functions ✅
 5. Automatic Brackets ✅
 6. Add Scientific Btn Toggle ✅
+7. Fix some exponent brackets and also replace last 2 with actual scientific function
+ln 1/x 10^

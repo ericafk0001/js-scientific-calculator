@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .replace(/cos/g, "Math.cos") // cos (cosine) → Math.cos
         .replace(/tan/g, "Math.tan") // tan (tangent) → Math.tan
         .replace(/log/g, "Math.log10") // log (logarithm base 10) → Math.log10
+        .replace(/ln/g, "Math.log") // ln (natural log) → Math.log
         .replace(/\u221A/g, "Math.sqrt") // √ (square root) → Math.sqrt
         .replace(/e/g, "Math.E"); // e (Euler's number) → Math.E
 
@@ -54,13 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
           factorial(parseInt(n))
         );
       }
+
+      // handle exponent
+      sanitized = sanitized.replace(/\^/g, "**");
+
       console.log("Sanitized input:", sanitized);
 
-      // exponent
-      const parsed = sanitized.replace(/\^/g, "**");
-
-      //eval
-      const result = new Function(`return ${parsed}`)();
+      // Evaluate the sanitized expression
+      const result = new Function(`return ${sanitized}`)();
       currentValue = result.toString();
       display.value = currentValue;
     } catch (error) {
@@ -70,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // event listener foreach button
+  // Event listener for each button
   for (let i = 0; i < btns.length; i++) {
     const btn = btns[i];
     btn.addEventListener("click", function () {
@@ -82,14 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
           display.value = currentValue;
         } else if (value === "=") {
           solve();
-        } else if (["sin", "cos", "tan", "log"].includes(value)) {
-          // is there an existing num?
+        } else if (["sin", "cos", "tan", "log", "ln"].includes(value)) {
+          // Check if there's a number in the display
           const numberInDisplay = currentValue.trim();
           if (numberInDisplay) {
-            // remove previous value insert the function with that number inside the parentheses
+            // Remove the previous value and insert the function with that number inside parentheses
             currentValue = `${value}(${numberInDisplay})`;
           } else {
-            // else just add one bracket
+            // Add an opening parenthesis for the function
             currentValue += value + "(";
           }
           display.value = currentValue;

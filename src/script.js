@@ -77,7 +77,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Event listener for each button
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Backspace") {
+      currentValue = currentValue.slice(0, -1);
+      display.value = currentValue;
+    }
+  });
+
+  // for loop
   for (let i = 0; i < btns.length; i++) {
     const btn = btns[i];
     btn.addEventListener("click", function () {

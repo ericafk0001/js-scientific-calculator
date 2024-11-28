@@ -1,8 +1,0 @@
-1. Save previous result as tiny text above result unless AC'ed
-2. More responsive design ✅
-3. Dark/Light theme toggle
-4. More scientific functions ✅
-5. Automatic Brackets ✅
-6. Add Scientific Btn Toggle ✅
-7. Fix some exponent brackets and also replace last 2 with actual scientific function
-ln 1/x 10^

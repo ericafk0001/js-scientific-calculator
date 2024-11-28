@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  let previousResult = 0;
   const display = document.getElementById("calc-display");
   const btns = document.getElementsByClassName("btn");
   const btnradio1 = document.getElementById("btnradio1");
@@ -64,7 +65,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // Evaluate the sanitized expression
       const result = new Function(`return ${sanitized}`)();
       currentValue = result.toString();
+
+      const prevResultDisplay = document.getElementById("prev-result");
+      prevResultDisplay.textContent = `${previousResult}`;
       display.value = currentValue;
+      previousResult = result;
     } catch (error) {
       currentValue = "Error";
       display.value = currentValue;
@@ -82,6 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (value === "AC") {
           currentValue = "";
           display.value = currentValue;
+          const prevResultDisplay = document.getElementById("prev-result");
+          prevResultDisplay.textContent = "0";
+          previousResult = 0; // Reset previous result
         } else if (value === "=") {
           solve();
         } else if (["sin", "cos", "tan", "log", "ln"].includes(value)) {
@@ -106,4 +114,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  const htmlElement = document.documentElement;
+  const switchElement = document.getElementById("darkModeSwitch");
+  const currentTheme = localStorage.getItem("bsTheme") || "light";
+  htmlElement.setAttribute("data-bs-theme", currentTheme);
+  switchElement.checked = currentTheme === "dark";
+
+  switchElement.addEventListener("change", function () {
+    if (this.checked) {
+      htmlElement.setAttribute("data-bs-theme", "dark");
+      localStorage.setItem("bsTheme", "dark");
+    } else {
+      htmlElement.setAttribute("data-bs-theme", "light");
+      localStorage.setItem("bsTheme", "light");
+    }
+  });
 });

@@ -1,6 +1,6 @@
 # Javascript Scientific Calculator
 
-A simple yet powerful calculator built with JavaScript. It supports basic operations as well as scientific functions, and includes a dark mode toggle. Uses bootstrap for a responsive, mobile friendly design :p
+A simple yet powerful calculator built with JavaScript. It supports basic operations as well as scientific functions, and includes a dark mode toggle. Uses Bootstrap for a responsive, mobile friendly design :p
 
 ## Features
 
